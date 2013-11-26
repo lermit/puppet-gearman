@@ -110,4 +110,4 @@ For detailed info about the logic and usage patterns of Example42 modules check 
 
 ## CONTINUOUS TESTING
 
-Travis {<img src="https://travis-ci.org/lermit/puppet-gearman.png?branch=master" alt="Build Status" />}[https://travis-ci.org/lermit/puppet-gearman]
+Travis <img src="https://travis-ci.org/lermit/puppet-gearman.png?branch=master" alt="Build Status" />[https://travis-ci.org/lermit/puppet-gearman]
