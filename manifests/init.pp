@@ -245,7 +245,7 @@ class gearman (
   $file_descriptors    = params_lookup( 'file_descriptors'),
   $threads             = params_lookup( 'threads' ),
   $job_retries         = params_lookup( 'job_retries' ),
-  $round_robin         = params_lookup( 'round_robin' ),
+  $round_robin         = params_lookup( 'round_robin' )
   ) inherits gearman::params {
 
   $bool_service_autorestart=any2bool($service_autorestart)
