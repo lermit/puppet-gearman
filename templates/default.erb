@@ -1,0 +1,34 @@
+# File managed by puppet
+
+# This is a configuration file for /etc/init.d/gearmand; it allows
+# you to perform common modifications to the behavior of the gearmand
+# daemon startup without editing the init script to allow our package
+# management to handle file upgrades.
+#
+# Examples ( from http://gearman.org/index.php?id=manual:job_server )
+#
+# Use drizzle as persistent queue store
+# OPTIONS="-q libdrizzle --libdrizzle-db=some_db \
+#                        --libdrizzle-table=gearman_queue"
+#
+# Use mysql as persistent queue store
+# OPTIONS="-q mysql --mysql-host=10.0.0.1 --mysql-user=gearman \
+#                   --mysql-password=secret --mysql-db=some_db \
+#                   --mysql-table=gearman_queue"
+#
+
+OPTIONS="--backlog=<%= scope.lookupvar('gearman::backlog') %> \
+<% if scope.lookupvar('gearman::job_retries') != '0' %>--job-retries=<%= scope.lookupvar('german::job_retries') %><% end %> \
+--port=<%= scope.lookupvar('gearman::port') %> \
+--threads=<%= scope.lookupvar('gearman::threads') %> \
+<% if scope.lookupvar('gearman::file_descriptors') != '0' %>--file-descriptors=<%= scope.lookupvar('gearman::file_descriptors') %><% end %> \
+--worker-wakeup=<%= scope.lookupvar('gearman::worker_wakeup') %> \
+<% if @verbose -%>
+--verbose=<%= scope.lookupvar('gearman::verbose') %> \
+<% end -%>
+<% if @queue_type -%>
+--queue-type=<%= scope.lookupvar('gearman::queue_type') %> \
+<%= scope.lookupvar('queue_params') %> \
+<% end -%>
+--log-file=<%= scope.lookupvar('gearman::log_file') %> \
+"
